@@ -4,6 +4,7 @@ import Componente from "./components/Componente";
 import Propiedades from "./components/Propiedades";
 import Estado from "./components/Estado";
 import RenderizadoCondicional from "./components/RenderizadoCondicional";
+import RenderizadoElementos from "./components/RenderizadoElementos";
 import "./App.css";
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
           </a>
         </section>
         <section>
-          <Componente msg="Hola soy un Componente funcional expresado desde una prop" />
+          <Componente msg="Componente funcional expresado desde una prop" />
           <hr />
           <Propiedades
             cadena="cadena de texto"
@@ -37,14 +38,14 @@ function App() {
             objeto={{ nombre: "joel", correo: "joel@gmail.com" }}
             funcion={(num) => num * num}
             elementoReact={<i>Esto es un elemento React</i>}
-            componenteReact={
-              <Componente msg="Soy un Componente pasado como Prop" />
-            }
+            componenteReact={<Componente msg="Componente pasado como Prop" />}
           />
           <hr />
           <Estado />
           <hr />
           <RenderizadoCondicional />
+          <hr />
+          <RenderizadoElementos />
         </section>
       </header>
     </div>
