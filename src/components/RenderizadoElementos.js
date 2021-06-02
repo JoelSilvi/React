@@ -15,7 +15,7 @@ export default class RenderizadoElementos extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      estaciones: ["Primavera", "Verano", "Otño", "Invierno"],
+      estaciones: ["Primavera", "Verano", "Otoño", "Invierno"],
     };
   }
   render() {
