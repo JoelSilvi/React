@@ -8,6 +8,7 @@ import RenderizadoElementos from "./components/RenderizadoElementos";
 import { EventosES6, EventosES7, MasSobreEventos } from "./components/Eventos";
 import ComunicacionComponentes from "./components/ComunicacionComponentes";
 import CicloVida from "./components/CicloVida";
+import AjaxApis from "./components/AjaxApis";
 import "./App.css";
 
 function App() {
@@ -17,9 +18,9 @@ function App() {
         <section>
           <img src={logo} className="App-logo" alt="logo" />
 
-          <p>
+          {/* <p>
             Editar <code>src/App.js</code> and save to reload.
-          </p>
+          </p> */}
 
           <a
             className="App-link"
@@ -27,10 +28,12 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            {/* Learn React */}
           </a>
         </section>
         <section>
+          <AjaxApis />
+          <hr />
           <Componente msg="Componente funcional expresado desde una prop" />
           <hr />
           <Propiedades
@@ -43,6 +46,7 @@ function App() {
             elementoReact={<i>Esto es un elemento React</i>}
             componenteReact={<Componente msg="Componente pasado como Prop" />}
           />
+
           <hr />
           <Estado />
           <hr />
@@ -59,6 +63,7 @@ function App() {
           <ComunicacionComponentes />
           <hr />
           <CicloVida />
+          <hr />
         </section>
       </header>
     </div>
