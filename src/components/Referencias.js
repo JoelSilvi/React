@@ -1,4 +1,4 @@
-import React, { createRef, useRef } from "react";
+import React, { useRef } from "react";
 
 export default function Referencias() {
   // let refMenu = createRef(), para class component
@@ -32,15 +32,6 @@ export default function Referencias() {
         Menú
       </button>
       <nav id="menu" ref={refMenu} style={{ display: "none" }}>
-        <a href="#">Seccion 1</a>
-        <br />
-        <a href="#">Seccion 2</a>
-        <br />
-        <a href="#">Seccion 3</a>
-        <br />
-        <a href="#">Seccion 4</a>
-        <br />
-        <a href="#">Seccion 5</a>
         <br />
       </nav>
     </>
