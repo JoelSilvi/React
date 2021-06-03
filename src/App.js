@@ -9,6 +9,7 @@ import { EventosES6, EventosES7, MasSobreEventos } from "./components/Eventos";
 import ComunicacionComponentes from "./components/ComunicacionComponentes";
 import CicloVida from "./components/CicloVida";
 import AjaxApis from "./components/AjaxApis";
+import ContadorHooks from "./components/ContadorHooks";
 import "./App.css";
 
 function App() {
@@ -18,9 +19,9 @@ function App() {
         <section>
           <img src={logo} className="App-logo" alt="logo" />
 
-          {/* <p>
+          <p>
             Editar <code>src/App.js</code> and save to reload.
-          </p> */}
+          </p>
 
           <a
             className="App-link"
@@ -28,7 +29,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {/* Learn React */}
+            Learn React
           </a>
         </section>
         <section>
@@ -64,6 +65,7 @@ function App() {
           <hr />
           <CicloVida />
           <hr />
+          <ContadorHooks titulo="seguidores" />
         </section>
       </header>
     </div>
