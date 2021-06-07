@@ -6,19 +6,48 @@ const initialForm = {
   id: null,
 };
 
-const CrudForm = () => {
+const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
   const [form, setForm] = useState(initialForm);
 
-  const HandleChange = (e) => {};
+  const HandleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  const HandleSubmit = (e) => {};
+  const HandleSubmit = (e) => {
+    e.preventDefault();
 
-  const HandleReset = (e) => {};
+    if (!form.name || !form.constellation) {
+      alert("Datos incompletos");
+      return;
+    }
+
+    if (form.id === null) {
+      createData(form);
+    } else {
+      updateData(form);
+    }
+
+    HandleReset();
+  };
+
+  const HandleReset = (e) => {
+    setForm(initialForm);
+    setDataToEdit(null);
+  };
+
+  const focusMethod = function getFocus() {
+    document.getElementById("myTextField").focus();
+  };
+
   return (
     <div>
       <h3>Agregar</h3>
       <form onSubmit={HandleSubmit}>
         <input
+          id="myTextField"
           type="text"
           name="name"
           placeholder="Nombre"
@@ -32,7 +61,12 @@ const CrudForm = () => {
           onChange={HandleChange}
           value={form.constellation}
         />
-        <input type="submit" value="Enviar" onClick={HandleSubmit} />
+        <input
+          type="submit"
+          value="Enviar"
+          onClick={HandleSubmit}
+          onClick={focusMethod}
+        />
         <input type="reset" value="Limpiar" onClick={HandleReset} />
       </form>
     </div>
