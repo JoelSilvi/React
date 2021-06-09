@@ -1,38 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { helpHttp } from "../helpers/helpHttp";
 import CrudForm from "./CrudForm";
 import CrudTable from "./CrudTable";
-
-const initialDb = [
-  {
-    id: 1,
-    name: "Seiya",
-    constellation: "Pegaso",
-  },
-  {
-    id: 2,
-    name: "Shiryu",
-    constellation: "Dragón",
-  },
-  {
-    id: 3,
-    name: "Hyoga",
-    constellation: "Cisne",
-  },
-  {
-    id: 4,
-    name: "Shun",
-    constellation: "Adrómeda",
-  },
-  {
-    id: 5,
-    name: "Ikki",
-    constellation: "Fénix",
-  },
-];
 
 const CrudApi = () => {
   const [db, setDb] = useState([]);
   const [dataToEdit, setDataToEdit] = useState(null);
+
+  let api = helpHttp();
+  let url = "http://localhost:5000/caballeros";
+
+  useEffect(() => {
+    api.get(url).then((res) => {
+      // console.log(res);
+      if (!res.err) {
+        setDb(res);
+      } else {
+        setDb(null);
+      }
+    });
+  }, []);
 
   const createData = (data) => {
     data.id = Date.now();
@@ -57,7 +44,7 @@ const CrudApi = () => {
 
   return (
     <div>
-      <h2>CRUD App</h2>
+      <h2>CRUD API</h2>
       <article className="grid-1-2">
         <CrudForm
           createData={createData}

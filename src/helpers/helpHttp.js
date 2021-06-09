@@ -1,4 +1,4 @@
-export const helHttp = () => {
+export const helpHttp = () => {
   const customFetch = (endpoint, options) => {
     const defaultHeader = {
       accept: "application/json",
@@ -15,13 +15,13 @@ export const helHttp = () => {
     options.body = JSON.stringify(options.body) || false;
     if (!options.body) delete options.body;
 
-    console.log(options);
+    // console.log(options);
     setTimeout(() => controller.abort(), 3000);
 
     return fetch(endpoint, options)
       .then((res) =>
         res.ok
-          ? res.json
+          ? res.json()
           : Promise.reject({
               err: true,
               status: res.status || "00",
