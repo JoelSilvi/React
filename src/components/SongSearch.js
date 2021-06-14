@@ -7,7 +7,7 @@ import SongDetails from "./SongDetails";
 const SongSearch = () => {
   const [search, setSearch] = useState(null);
   const [lyric, setLyric] = useState(null);
-  const [bio, SetBio] = useState(null);
+  const [bio, setBio] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const SongSearch = () => {
 
       console.log(artistRes, songRes);
 
-      SetBio(artistRes);
+      setBio(artistRes);
       setLyric(songRes);
       setLoading(false);
     };
@@ -48,7 +48,9 @@ const SongSearch = () => {
       <h2>Song Search</h2>
       {loading && <Loader />}
       <SongForm handleSearch={handleSearch} />
-      <SongDetails search={search} lyric={lyric} bio={bio} />
+      {search && !loading && (
+        <SongDetails search={search} lyric={lyric} bio={bio} />
+      )}
     </div>
   );
 };
