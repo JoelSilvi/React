@@ -13,11 +13,11 @@ const SelectsAnidados = () => {
       <h2>Selects Anidados</h2>
       <h3>México</h3>
       <SelectList
-        title="estado"
-        url={`https://api-sepomex.hckdrk.mx/query/get_estados?token=${TOKEN}`}
-        handleChange={(e) => {
-          setState(e.target.value);
-        }}
+      // title="estado"
+      // url={`https://api-sepomex.hckdrk.mx/query/get_estados?token=${TOKEN}`}
+      // handleChange={(e) => {
+      //   setState(e.target.value);
+      // }}
       />
       {state && (
         <SelectList
