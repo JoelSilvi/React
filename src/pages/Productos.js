@@ -32,7 +32,6 @@ const Productos = () => {
         Mostrando Productos del <b>{start}</b> al <b>{end}</b>
       </p>
       {start > LIMIT && <button onClick={handlePrev}>Atrás</button>}
-
       <button onClick={handleNext}>Adelante</button>
     </div>
   );
