@@ -11,6 +11,7 @@ import Home from "../pages/Home";
 import MenuConceptos from "./MenuConceptos";
 import Usuario from "../pages/Usuario";
 import Productos from "../pages/Productos";
+import ReactTopics from "../pages/ReactTopics";
 
 const ConceptosBasicos = () => {
   return (
@@ -27,10 +28,10 @@ const ConceptosBasicos = () => {
           <Route exact path="/about">
             <Redirect to="/acerca" />
           </Route>
-
           <Route exact path="/contact">
             <Redirect to="/contacto" />
           </Route>
+          <Route path="/react" component={ReactTopics} />
 
           <Route path="*" component={Error404} />
         </Switch>
