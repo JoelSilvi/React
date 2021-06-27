@@ -34,6 +34,21 @@
       "id": 7,
       "name": "Saga",
       "constellation": "Geminis"
+    },
+    {
+      "name": "Shaka",
+      "constellation": "Virgo",
+      "id": 1624821916380
+    },
+    {
+      "name": "Camus",
+      "constellation": "Acuario",
+      "id": 1624833064605
+    },
+    {
+      "name": "Afrodita",
+      "constellation": "Piscis",
+      "id": 1624835393772
     }
   ]
 }

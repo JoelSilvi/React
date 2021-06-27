@@ -15,11 +15,11 @@ function App() {
         Documentación{" "}
       </a>
       <hr />
-      <SongSearch />
+      {/* <SongSearch /> */}
       <hr />
       <CrudApi />
       <hr />
-      <ConceptosBasicos />
+      {/* <ConceptosBasicos /> */}
     </div>
   );
 }

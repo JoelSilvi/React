@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { HashRouter, NavLink, Switch, Route } from "react-router-dom";
 import { helpHttp } from "../helpers/helpHttp";
 import CrudForm from "./CrudForm";
 import CrudTable from "./CrudTable";
 import Loader from "./Loader";
 import Message from "./Message";
+import Error404 from "../pages/Error404";
 
 const CrudApi = () => {
   const [db, setDb] = useState(null);
@@ -94,29 +96,56 @@ const CrudApi = () => {
 
   return (
     <div>
-      <h2>CRUD API</h2>
-      <article className="grid-1-2">
-        <CrudForm
-          createData={createData}
-          updateData={updateData}
-          dataToEdit={dataToEdit}
-          setDataToEdit={setDataToEdit}
-        />
-        {loading && <Loader />}
-        {error && (
-          <Message
-            msg={`Error ${error.status}: ${error.statusText} `}
-            bgColor="#dc3545"
-          />
-        )}
-        {db && (
-          <CrudTable
-            data={db}
-            setDataToEdit={setDataToEdit}
-            deleteData={deleteData}
-          />
-        )}
-      </article>
+      <HashRouter basename="santos">
+        <header>
+          <h2>CRUD API</h2>
+          <nav>
+            <NavLink to="/" activeClassName="active">
+              Santos
+            </NavLink>
+            <NavLink to="/agregar" activeClassName="active">
+              Agregar
+            </NavLink>
+          </nav>
+        </header>
+        <Switch>
+          <Route exact path="/">
+            {loading && <Loader />}
+            {error && (
+              <Message
+                msg={`Error ${error.status}: ${error.statusText} `}
+                bgColor="#dc3545"
+              />
+            )}
+            {db && (
+              <CrudTable
+                data={db}
+                setDataToEdit={setDataToEdit}
+                deleteData={deleteData}
+              />
+            )}
+          </Route>
+          <Route exact path="/agregar">
+            <CrudForm
+              createData={createData}
+              updateData={updateData}
+              dataToEdit={dataToEdit}
+              setDataToEdit={setDataToEdit}
+            />
+          </Route>
+
+          <Route exact path="/editar/:id">
+            <CrudForm
+              createData={createData}
+              updateData={updateData}
+              dataToEdit={dataToEdit}
+              setDataToEdit={setDataToEdit}
+            />
+          </Route>
+          <Route path="*" children={<Error404 />} />
+        </Switch>
+      </HashRouter>
+      <article className="grid-1-2"></article>
     </div>
   );
 };
