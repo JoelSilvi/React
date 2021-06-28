@@ -5,6 +5,7 @@ import Error404 from "../pages/Error404";
 import Loader from "./Loader";
 import SongForm from "./SongForm";
 import SongDetails from "./SongDetails";
+import SongTable from "./SongTable";
 
 let mySongsInit = JSON.parse(localStorage.getItem("mySongs")) || [];
 
@@ -53,7 +54,9 @@ const SongSearch = () => {
   const handleSaveSong = () => {
     alert("Salvando canción en Favoritos");
   };
-  const handleDeleteSong = (id) => {};
+  const handleDeleteSong = (id) => {
+    alert(`Eliminando cancion con el id: ${id}`);
+  };
 
   return (
     <div>
@@ -63,14 +66,17 @@ const SongSearch = () => {
           <Link to="/">Home</Link>
         </header>
         {loading && <Loader />}
-        <article className="grid-1-3">
+        <article className="grid-1-2">
           <Switch>
             <Route exact path="/">
               <SongForm
                 handleSearch={handleSearch}
                 handleSaveSong={handleSaveSong}
               />
-              <h2>Tabla de Canciones</h2>
+              <SongTable
+                mySongs={mySongs}
+                handleDeleteSong={handleDeleteSong}
+              />
               {search && !loading && (
                 <SongDetails search={search} lyric={lyric} bio={bio} />
               )}
