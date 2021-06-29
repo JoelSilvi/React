@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { HashRouter, Link, Route, Switch } from "react-router-dom";
 import { helpHttp } from "../helpers/helpHttp";
 import Error404 from "../pages/Error404";
+import SongPage from "../pages/SongPage";
 import Loader from "./Loader";
 import SongForm from "./SongForm";
 import SongDetails from "./SongDetails";
@@ -53,9 +54,24 @@ const SongSearch = () => {
 
   const handleSaveSong = () => {
     alert("Salvando canción en Favoritos");
+    let currentSong = {
+      search,
+      lyric,
+      bio,
+    };
+
+    setMySongs((mySongs) => [...mySongs, currentSong]);
+    setSearch(null);
   };
   const handleDeleteSong = (id) => {
-    alert(`Eliminando cancion con el id: ${id}`);
+    // alert(`Eliminando cancion con el id: ${id}`);
+    let isDelete = window.confirm(`Estás seguro que desea eliminar ${id}`);
+
+    if (isDelete) {
+      let songs = mySongs.filter((el, index) => index !== id);
+      setMySongs(songs);
+      localStorage.setItem("mySongs", JSON.stringify(songs));
+    }
   };
 
   return (
@@ -81,9 +97,11 @@ const SongSearch = () => {
                 <SongDetails search={search} lyric={lyric} bio={bio} />
               )}
             </Route>
-            <Route exact path="/canciones/:id">
-              <h2>Página de canción</h2>
-            </Route>
+            <Route
+              exact
+              path="/:id"
+              children={<SongPage mySongs={mySongs} />}
+            />
             <Route path="*" children={<Error404 />} />
           </Switch>
         </article>
